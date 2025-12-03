@@ -4,6 +4,7 @@ import { ellipsify } from '@workspace/ui/lib/ellipsify'
 import { useNavigate, useParams } from 'react-router'
 import { usePortfolioTokenMint } from './data-access/use-portfolio-token-mint.tsx'
 import { PortfolioUiModal } from './ui/portfolio-ui-modal.tsx'
+import { PortfolioUiSendGuard } from './ui/portfolio-ui-send-guard.tsx'
 import { PortfolioUiSendMint } from './ui/portfolio-ui-send-mint.tsx'
 
 export function PortfolioFeatureModalSend() {
@@ -21,11 +22,13 @@ export function PortfolioFeatureModalSend() {
 
   return (
     <PortfolioUiModal title={t(($) => $.actionSend)}>
-      <PortfolioUiSendMint
-        isLoading={false}
-        mint={mint}
-        send={async (input) => await navigate(`/modals/confirm/${token}/${input.destination}/${input.amount}`)}
-      />
+      <PortfolioUiSendGuard>
+        <PortfolioUiSendMint
+          isLoading={false}
+          mint={mint}
+          send={async (input) => await navigate(`/modals/confirm/${token}/${input.destination}/${input.amount}`)}
+        />
+      </PortfolioUiSendGuard>
     </PortfolioUiModal>
   )
 }

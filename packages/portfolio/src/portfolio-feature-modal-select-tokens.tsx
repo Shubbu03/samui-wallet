@@ -3,6 +3,7 @@ import { useNetworkActive } from '@workspace/db-react/use-network-active'
 import { useTranslation } from '@workspace/i18n'
 import { useGetTokenBalances } from './data-access/use-get-token-metadata.ts'
 import { PortfolioUiModal } from './ui/portfolio-ui-modal.tsx'
+import { PortfolioUiSendGuard } from './ui/portfolio-ui-send-guard.tsx'
 import { PortfolioUiTokenBalances } from './ui/portfolio-ui-token-balances.tsx'
 
 export function PortfolioFeatureModalSelectTokens() {
@@ -13,7 +14,9 @@ export function PortfolioFeatureModalSelectTokens() {
 
   return (
     <PortfolioUiModal title={t(($) => $.actionSelectToken)}>
-      <PortfolioUiTokenBalances items={balances} />
+      <PortfolioUiSendGuard>
+        <PortfolioUiTokenBalances items={balances} />
+      </PortfolioUiSendGuard>
     </PortfolioUiModal>
   )
 }

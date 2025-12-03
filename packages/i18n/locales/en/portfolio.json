@@ -19,5 +19,10 @@
   "sendInputAmountLabel": "Amount",
   "sendInputAmountPlaceholder": "Amount",
   "sendInputDestinationLabel": "Destination",
-  "sendInputDestinationPlaceholder": "Destination"
+  "sendInputDestinationPlaceholder": "Destination",
+  "sendNoSignableAccounts": "No signable accounts available",
+  "sendNoSignableAccountsDescription": "You need a derived or imported account to send transactions.",
+  "sendSelectAccountDescription": "Watch-only accounts cannot sign transactions. Select an account that can sign.",
+  "sendSelectAccountPlaceholder": "Select account...",
+  "sendSelectAccountTitle": "Select a signing account"
 }

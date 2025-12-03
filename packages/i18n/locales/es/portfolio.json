@@ -19,5 +19,10 @@
   "sendInputAmountLabel": "Cantidad",
   "sendInputAmountPlaceholder": "Cantidad",
   "sendInputDestinationLabel": "Destino",
-  "sendInputDestinationPlaceholder": "Destino"
+  "sendInputDestinationPlaceholder": "null",
+  "sendNoSignableAccounts": "null",
+  "sendNoSignableAccountsDescription": "null",
+  "sendSelectAccountDescription": "null",
+  "sendSelectAccountPlaceholder": "null",
+  "sendSelectAccountTitle": "null"
 }

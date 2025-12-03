@@ -6,6 +6,7 @@ import { usePortfolioTokenMint } from './data-access/use-portfolio-token-mint.ts
 import { usePortfolioTxSend } from './data-access/use-portfolio-tx-send.tsx'
 import { PortfolioUiModal } from './ui/portfolio-ui-modal.tsx'
 import { PortfolioUiSendConfirm } from './ui/portfolio-ui-send-confirm.tsx'
+import { PortfolioUiSendGuard } from './ui/portfolio-ui-send-guard.tsx'
 
 export function PortfolioFeatureModalConfirm() {
   const { t } = useTranslation('portfolio')
@@ -31,18 +32,20 @@ export function PortfolioFeatureModalConfirm() {
 
   return (
     <PortfolioUiModal title={t(($) => $.actionConfirm)}>
-      <PortfolioUiSendConfirm
-        amount={amount}
-        confirm={async (input) => {
-          const signature = await confirmMutation.mutateAsync(input)
-          if (signature) {
-            await navigate(`/modals/complete/${signature}`)
-          }
-        }}
-        destination={destination}
-        isLoading={confirmMutation.isPending}
-        mint={mint}
-      />
+      <PortfolioUiSendGuard>
+        <PortfolioUiSendConfirm
+          amount={amount}
+          confirm={async (input) => {
+            const signature = await confirmMutation.mutateAsync(input)
+            if (signature) {
+              await navigate(`/modals/complete/${signature}`)
+            }
+          }}
+          destination={destination}
+          isLoading={confirmMutation.isPending}
+          mint={mint}
+        />
+      </PortfolioUiSendGuard>
     </PortfolioUiModal>
   )
 }
